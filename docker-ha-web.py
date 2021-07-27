@@ -34,6 +34,7 @@ class HTTPRequestHandler(server.SimpleHTTPRequestHandler):
                 statedict['Running'] = dockerdict['State']['Running']
                 statedict['Name'] = container
                 statedict['State'] = dockerdict['State']['Status']
+                statedict['Image'] = dockerdict['Config']['Image']
                 stateresponse = json.dumps(statedict)
             else:
                 self.send_response(404, 'Container not found')
